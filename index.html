@@ -1,1 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Essay Writing Tips (Narrative, Descriptive, Expository, Argumentative)</title>
+  <style>
+    :root{
+      --bg:#0b1020; --panel:#111a33; --card:#0f1730; --text:#e9eeff; --muted:#b9c4ffcc;
+      --line:#26335f; --accent:#7aa2ff;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(122,162,255,.25), transparent 55%),
+        radial-gradient(900px 500px at 110% 10%, rgba(94,234,212,.18), transparent 50%),
+        var(--bg);
+      color:var(--text);
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+    .panel{
+      background: rgba(17,26,51,.55);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    h1{margin:0 0 6px;font-size:22px}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+    @media (max-width: 900px){.grid{grid-template-columns:1fr}}
+    .card{
+      background: rgba(15,23,48,.45);
+      border:1px solid rgba(38,51,95,.8);
+      border-radius: 16px;
+      padding:14px;
+    }
+    .card h2{margin:0 0 6px;font-size:18px}
+    ul{margin:8px 0 0;padding-left:18px;line-height:1.6}
+    .top{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+    .btn{
+      display:inline-block;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid rgba(38,51,95,.9);
+      background: rgba(17,26,51,.65);
+      color:var(--text);
+    }
+    .btn:hover{border-color: rgba(122,162,255,.75)}
+  </style>
+</head>
 
+<body>
+  <div class="container">
+    <div class="panel">
+      <div class="top">
+        <div>
+          <h1>Essay Writing Tips</h1>
+          <div class="muted">Narrative · Descriptive · Expository · Argumentative</div>
+        </div>
+        <a class="btn" href="#checklist">Quick Checklist</a>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:14px">
+      <p style="margin:0" class="muted">
+        This site gives clear, school-friendly guidance for four common essay types.
+        Each section includes purpose, structure, actionable tips, and common mistakes.
+      </p>
+    </div>
+
+    <div class="grid" style="margin-top:14px">
+      <section class="card">
+        <h2>Narrative Essay</h2>
+        <div class="muted"><b>Purpose:</b> Tell a meaningful story that reveals a theme.</div>
+        <ul>
+          <li><b>Structure:</b> Hook → Context → Rising action → Climax → Resolution → Reflection</li>
+          <li><b>Tips:</b> Focus on conflict and turning points; use concrete actions and sensory details.</li>
+          <li><b>Common mistakes:</b> A timeline with no tension; details that don’t support the theme.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Descriptive Essay</h2>
+        <div class="muted"><b>Purpose:</b> Create a vivid picture of a person/place/object/experience.</div>
+        <ul>
+          <li><b>Structure:</b> Overall impression → Organized details (spatial order) → Closing image</li>
+          <li><b>Tips:</b> Use specific nouns + strong verbs; choose 3–5 signature details.</li>
+          <li><b>Common mistakes:</b> Too many adjectives; details with no clear organization.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Expository Essay</h2>
+        <div class="muted"><b>Purpose:</b> Explain a topic clearly using facts and examples.</div>
+        <ul>
+          <li><b>Structure:</b> Thesis → Definitions/Background → Explanation/Process → Examples/Impact</li>
+          <li><b>Tips:</b> Make the logic visible with clear transitions; keep scope controlled.</li>
+          <li><b>Common mistakes:</b> Dumping information without organization; unclear thesis.</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Argumentative Essay</h2>
+        <div class="muted"><b>Purpose:</b> Defend a debatable claim with evidence and reasoning.</div>
+        <ul>
+          <li><b>Structure:</b> Claim → Reasons → Evidence → Counterargument → Rebuttal → Conclusion</li>
+          <li><b>Tips:</b> Use CER: Claim–Evidence–Reasoning; steelman the counterargument.</li>
+          <li><b>Common mistakes:</b> Opinions with no evidence; weak or unfair counterargument.</li>
+        </ul>
+      </section>
+    </div>
+
+    <div id="checklist" class="panel" style="margin-top:14px">
+      <h2 style="margin:0 0 8px;font-size:18px">60-Second Submission Checklist</h2>
+      <ul>
+        <li>My thesis is clear and matches the essay type.</li>
+        <li>Each paragraph has one job (one main point).</li>
+        <li>Details/evidence are relevant, and I explain <i>why</i> they support my point.</li>
+        <li>I avoid repetition in the conclusion and end with significance or implications.</li>
+        <li>I checked spelling, punctuation, and sentence clarity.</li>
+      </ul>
+      <p class="muted" style="margin-top:10px">
+        If your page still shows blank after this file is live, the issue is your Pages settings (branch/folder).
+      </p>
+    </div>
+  </div>
+</body>
+</html>
