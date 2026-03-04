@@ -3,133 +3,585 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Essay Writing Tips (Narrative, Descriptive, Expository, Argumentative)</title>
+  <title>Essay Writing Tips Hub</title>
   <style>
     :root{
       --bg:#0b1020; --panel:#111a33; --card:#0f1730; --text:#e9eeff; --muted:#b9c4ffcc;
-      --line:#26335f; --accent:#7aa2ff;
+      --line:#26335f; --accent:#7aa2ff; --good:#34d399; --warn:#fbbf24; --bad:#fb7185;
       --shadow: 0 12px 30px rgba(0,0,0,.35);
-      --radius: 18px;
+      --r: 16px;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(122,162,255,.25), transparent 55%),
-        radial-gradient(900px 500px at 110% 10%, rgba(94,234,212,.18), transparent 50%),
+        radial-gradient(1200px 600px at 20% -10%, rgba(122,162,255,.22), transparent 55%),
+        radial-gradient(900px 500px at 110% 10%, rgba(52,211,153,.14), transparent 50%),
         var(--bg);
-      color:var(--text);
+      color: var(--text);
     }
     a{color:var(--accent); text-decoration:none}
     a:hover{text-decoration:underline}
-    .container{max-width:1100px;margin:0 auto;padding:24px 16px 48px}
+    .container{max-width:1100px;margin:0 auto;padding:18px}
     .panel{
-      background: rgba(17,26,51,.55);
+      background: rgba(17,26,51,.62);
       border:1px solid var(--line);
-      border-radius: var(--radius);
+      border-radius: var(--r);
       box-shadow: var(--shadow);
       padding:16px;
     }
-    h1{margin:0 0 6px;font-size:22px}
+    .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    h1{margin:0;font-size:22px}
     .muted{color:var(--muted)}
-    .grid{display:grid;gap:14px;grid-template-columns:1fr 1fr}
-    @media (max-width: 900px){.grid{grid-template-columns:1fr}}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px; border-radius:999px;
+      border:1px solid rgba(122,162,255,.45);
+      background: rgba(122,162,255,.10);
+      font-size:12.5px;
+    }
+    .toolbar{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      margin-top:12px;
+    }
+    .btn, .input{
+      border-radius: 12px;
+      border:1px solid rgba(38,51,95,.9);
+      background: rgba(15,23,48,.55);
+      color: var(--text);
+      padding:10px 12px;
+      font-size: 14px;
+    }
+    .btn{cursor:pointer}
+    .btn:hover{border-color: rgba(122,162,255,.75)}
+    .input{flex:1 1 260px; outline:none}
+    .grid{
+      display:grid; gap:14px;
+      grid-template-columns: 1fr 1fr;
+      margin-top:14px;
+    }
+    @media (max-width: 920px){ .grid{grid-template-columns:1fr;} }
     .card{
-      background: rgba(15,23,48,.45);
+      background: rgba(15,23,48,.48);
       border:1px solid rgba(38,51,95,.8);
-      border-radius: 16px;
+      border-radius: var(--r);
       padding:14px;
     }
     .card h2{margin:0 0 6px;font-size:18px}
-    ul{margin:8px 0 0;padding-left:18px;line-height:1.6}
-    .top{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
-    .btn{
-      display:inline-block;
-      padding:10px 12px;
-      border-radius:12px;
-      border:1px solid rgba(38,51,95,.9);
-      background: rgba(17,26,51,.65);
-      color:var(--text);
+    .card h3{margin:12px 0 6px;font-size:15px}
+    ul{margin:8px 0 0; padding-left:18px; line-height:1.6}
+    li{margin:6px 0}
+    details{
+      background: rgba(15,23,48,.45);
+      border:1px solid rgba(38,51,95,.8);
+      border-radius: var(--r);
+      padding:12px 12px;
     }
-    .btn:hover{border-color: rgba(122,162,255,.75)}
+    summary{
+      cursor:pointer;
+      list-style:none;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      font-weight:800;
+    }
+    summary::-webkit-details-marker{display:none}
+    .chev{opacity:.9}
+    details[open] .chev{transform:rotate(180deg)}
+    .sectionTitle{
+      margin:18px 0 10px; font-size:16px;
+    }
+    .two{
+      display:grid; gap:14px; grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 920px){ .two{grid-template-columns:1fr;} }
+
+    /* Quiz */
+    .q{
+      padding:12px;
+      border:1px solid rgba(38,51,95,.8);
+      border-radius: var(--r);
+      background: rgba(15,23,48,.45);
+      margin-top:12px;
+    }
+    .qtitle{margin:0 0 8px; font-weight:800}
+    .opt{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 10px;
+      border:1px solid rgba(38,51,95,.75);
+      border-radius: 12px;
+      background: rgba(17,26,51,.40);
+      cursor:pointer;
+      margin-top:8px;
+    }
+    .opt input{margin-top:3px}
+    .opt:hover{border-color: rgba(122,162,255,.7)}
+    .result{
+      margin-top:12px;
+      padding:12px;
+      border-radius: var(--r);
+      border:1px solid rgba(38,51,95,.8);
+      background: rgba(17,26,51,.55);
+    }
+    .badge{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid rgba(38,51,95,.9);
+      background: rgba(17,26,51,.55);
+      font-size:12.5px;
+      margin-right:8px;
+    }
+    .good{border-color: rgba(52,211,153,.6); background: rgba(52,211,153,.10)}
+    .bad{border-color: rgba(251,113,133,.6); background: rgba(251,113,133,.10)}
+    .warn{border-color: rgba(251,191,36,.7); background: rgba(251,191,36,.10)}
+    .hr{height:1px; background: rgba(38,51,95,.75); margin:12px 0}
+    .toTop{
+      position: fixed; right: 18px; bottom: 18px;
+      display:none;
+      padding:10px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(38,51,95,.9);
+      background: rgba(17,26,51,.85);
+      color: var(--text);
+      cursor:pointer;
+    }
+    .toTop:hover{border-color: rgba(122,162,255,.75)}
+    @media print{
+      .toolbar, .toTop {display:none !important;}
+      body{background:#fff;color:#000}
+      .panel,.card,details{box-shadow:none;background:#fff;border-color:#ddd}
+      a{color:#000;text-decoration:underline}
+    }
   </style>
 </head>
-
 <body>
   <div class="container">
     <div class="panel">
-      <div class="top">
+      <div class="row">
         <div>
-          <h1>Essay Writing Tips</h1>
-          <div class="muted">Narrative · Descriptive · Expository · Argumentative</div>
+          <h1>Essay Writing Tips Hub</h1>
+          <div class="muted">General tips + Descriptive + Narrative + Argumentative + Expository</div>
         </div>
-        <a class="btn" href="#checklist">Quick Checklist</a>
+        <div class="pill"><b>Use it like a checklist:</b> plan → write → revise</div>
+      </div>
+
+      <div class="toolbar">
+        <input id="search" class="input" placeholder="Search (e.g., thesis, hook, ethos, facts, senses)..." />
+        <button class="btn" id="expandAll">Expand all</button>
+        <button class="btn" id="collapseAll">Collapse all</button>
+        <button class="btn" onclick="window.print()">Print / Save PDF</button>
+      </div>
+      <div class="muted" style="margin-top:10px;font-size:13px">
+        Tip: If you can’t summarize your thesis in one sentence, your essay is not ready.
       </div>
     </div>
 
+    <!-- OVERVIEW -->
     <div class="panel" style="margin-top:14px">
-      <p style="margin:0" class="muted">
-        This site gives clear, school-friendly guidance for four common essay types.
-        Each section includes purpose, structure, actionable tips, and common mistakes.
-      </p>
+      <div class="sectionTitle"><b>Overview</b></div>
+      <div class="grid">
+        <div class="card" data-kind="overview">
+          <h2>All Essays: Standard Format</h2>
+          <ul>
+            <li><b>Introduction:</b> Hook → Background → Thesis</li>
+            <li><b>Body paragraphs:</b> Topic sentence → Point → Example/Evidence → Explain → Repeat for each point</li>
+            <li><b>Conclusion:</b> Restate thesis → Summarize points → Final concluding sentence</li>
+          </ul>
+        </div>
+        <div class="card" data-kind="overview">
+          <h2>General Writing Tips</h2>
+          <ul>
+            <li><b>Brainstorm</b> (storm your topic) before writing.</li>
+            <li>Make an <b>outline</b> so your ideas stay organized.</li>
+            <li>Write a <b>strong thesis</b> first to improve clarity and structure.</li>
+            <li>Each paragraph should focus on <b>one main idea</b>.</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-    <div class="grid" style="margin-top:14px">
-      <section class="card">
-        <h2>Narrative Essay</h2>
-        <div class="muted"><b>Purpose:</b> Tell a meaningful story that reveals a theme.</div>
-        <ul>
-          <li><b>Structure:</b> Hook → Context → Rising action → Climax → Resolution → Reflection</li>
-          <li><b>Tips:</b> Focus on conflict and turning points; use concrete actions and sensory details.</li>
-          <li><b>Common mistakes:</b> A timeline with no tension; details that don’t support the theme.</li>
-        </ul>
-      </section>
+    <!-- ACCORDION: GENERAL CHECKLIST -->
+    <div class="panel" style="margin-top:14px">
+      <details class="acc" open data-type="general">
+        <summary>
+          60-Second Submission Checklist
+          <span class="chev">▼</span>
+        </summary>
+        <div class="hr"></div>
+        <div class="two">
+          <div class="card">
+            <h3>Checklist</h3>
+            <ul id="checklist">
+              <li><label><input type="checkbox" class="ck" /> My thesis is clear and fits the essay type.</label></li>
+              <li><label><input type="checkbox" class="ck" /> Each paragraph stays focused on one main idea.</label></li>
+              <li><label><input type="checkbox" class="ck" /> Evidence is relevant and I explain how it supports my point.</label></li>
+              <li><label><input type="checkbox" class="ck" /> My conclusion avoids repetition and adds insight/implications.</label></li>
+              <li><label><input type="checkbox" class="ck" /> I proofread for spelling, punctuation, and clear sentences.</label></li>
+            </ul>
+            <div class="result" style="margin-top:12px">
+              <span class="badge" id="progressBadge">0%</span>
+              <span class="muted" id="progressText">Checklist progress</span>
+              <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+                <button class="btn" id="resetChecklist">Reset</button>
+                <button class="btn" id="saveChecklist">Save progress</button>
+                <button class="btn" id="loadChecklist">Load saved</button>
+              </div>
+              <div class="muted" style="margin-top:10px;font-size:13px">
+                Saving uses your browser storage (only on this device).
+              </div>
+            </div>
+          </div>
 
-      <section class="card">
-        <h2>Descriptive Essay</h2>
-        <div class="muted"><b>Purpose:</b> Create a vivid picture of a person/place/object/experience.</div>
-        <ul>
-          <li><b>Structure:</b> Overall impression → Organized details (spatial order) → Closing image</li>
-          <li><b>Tips:</b> Use specific nouns + strong verbs; choose 3–5 signature details.</li>
-          <li><b>Common mistakes:</b> Too many adjectives; details with no clear organization.</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Expository Essay</h2>
-        <div class="muted"><b>Purpose:</b> Explain a topic clearly using facts and examples.</div>
-        <ul>
-          <li><b>Structure:</b> Thesis → Definitions/Background → Explanation/Process → Examples/Impact</li>
-          <li><b>Tips:</b> Make the logic visible with clear transitions; keep scope controlled.</li>
-          <li><b>Common mistakes:</b> Dumping information without organization; unclear thesis.</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h2>Argumentative Essay</h2>
-        <div class="muted"><b>Purpose:</b> Defend a debatable claim with evidence and reasoning.</div>
-        <ul>
-          <li><b>Structure:</b> Claim → Reasons → Evidence → Counterargument → Rebuttal → Conclusion</li>
-          <li><b>Tips:</b> Use CER: Claim–Evidence–Reasoning; steelman the counterargument.</li>
-          <li><b>Common mistakes:</b> Opinions with no evidence; weak or unfair counterargument.</li>
-        </ul>
-      </section>
+          <div class="card">
+            <h3>Quick Paragraph Formula (use this in Body)</h3>
+            <ul>
+              <li><b>Topic sentence:</b> what this paragraph proves</li>
+              <li><b>Point:</b> your reason or claim</li>
+              <li><b>Example/Evidence:</b> fact, detail, statistic, quote, or example</li>
+              <li><b>Explain:</b> why the evidence proves your point</li>
+              <li><b>Link:</b> connect back to thesis</li>
+            </ul>
+            <div class="hr"></div>
+            <button class="btn" id="copyTemplate">Copy Essay Template</button>
+            <div class="muted" style="margin-top:10px;font-size:13px">
+              Paste the template into Google Docs and fill it in.
+            </div>
+          </div>
+        </div>
+      </details>
     </div>
 
-    <div id="checklist" class="panel" style="margin-top:14px">
-      <h2 style="margin:0 0 8px;font-size:18px">60-Second Submission Checklist</h2>
-      <ul>
-        <li>My thesis is clear and matches the essay type.</li>
-        <li>Each paragraph has one job (one main point).</li>
-        <li>Details/evidence are relevant, and I explain <i>why</i> they support my point.</li>
-        <li>I avoid repetition in the conclusion and end with significance or implications.</li>
-        <li>I checked spelling, punctuation, and sentence clarity.</li>
-      </ul>
-      <p class="muted" style="margin-top:10px">
-        If your page still shows blank after this file is live, the issue is your Pages settings (branch/folder).
-      </p>
+    <!-- ACCORDION: ESSAY TYPES -->
+    <div class="panel" style="margin-top:14px">
+      <div class="sectionTitle"><b>Essay Types (Fold / Unfold)</b></div>
+
+      <details class="acc" data-type="descriptive">
+        <summary>Descriptive Essay <span class="chev">▼</span></summary>
+        <div class="hr"></div>
+        <div class="card">
+          <h3>What it is</h3>
+          <p class="muted" style="margin:0">
+            Descriptive essays describe objects, people, events, and feelings. The goal is to help the reader picture exactly what you describe.
+          </p>
+          <h3>Tips</h3>
+          <ul>
+            <li>Use the <b>five senses</b> (sight, sound, smell, taste, touch).</li>
+            <li>Be <b>specific</b> (strong nouns + verbs, not vague adjectives).</li>
+            <li>Use figurative language <b>carefully</b> (don’t overdo it).</li>
+            <li>Include <b>origin/background</b> (what led up to it, if it’s an event).</li>
+            <li>Connect to the reader’s <b>emotions</b>.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="acc" data-type="narrative">
+        <summary>Narrative Essay <span class="chev">▼</span></summary>
+        <div class="hr"></div>
+        <div class="card">
+          <h3>What it is</h3>
+          <p class="muted" style="margin:0">
+            Narrative (personal) writing tells a story from the author’s point of view, usually with a reason/message behind it.
+          </p>
+          <h3>Key features</h3>
+          <ul>
+            <li>Characters</li>
+            <li>Setting</li>
+            <li>Main event / climax</li>
+            <li>Clear storyline</li>
+            <li>Written in <b>first person</b> or <b>third person</b></li>
+          </ul>
+          <h3>Tips</h3>
+          <ul>
+            <li>Focus on developing <b>characters</b>.</li>
+            <li>Use descriptive techniques: senses, emotions, strategic dialogue, thoughts.</li>
+            <li>Make sure the story has a <b>clear point</b>.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="acc" data-type="argumentative">
+        <summary>Argumentative Essay <span class="chev">▼</span></summary>
+        <div class="hr"></div>
+        <div class="card">
+          <h3>What it is</h3>
+          <p class="muted" style="margin:0">
+            Argumentative writing tries to convince readers to support a claim using evidence (not just opinion).
+          </p>
+          <h3>Tips</h3>
+          <ul>
+            <li>Have a clear <b>thesis</b>.</li>
+            <li>Use strong evidence: facts, statistics, examples.</li>
+            <li>Use persuasive strategies:
+              <ul>
+                <li><b>Ethos</b>: credibility / trust</li>
+                <li><b>Logos</b>: logic / facts</li>
+                <li><b>Pathos</b>: emotion</li>
+              </ul>
+            </li>
+            <li>Include a strong <b>conclusion</b>.</li>
+            <li>Research well.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="acc" data-type="expository">
+        <summary>Expository Essay <span class="chev">▼</span></summary>
+        <div class="hr"></div>
+        <div class="card">
+          <h3>What it is</h3>
+          <p class="muted" style="margin:0">
+            Expository writing explains a topic clearly and logically. It informs using facts rather than personal opinions.
+          </p>
+          <h3>Tips</h3>
+          <ul>
+            <li>Use facts, examples, and explain evidence.</li>
+            <li>Use concise and clear language.</li>
+            <li>Organize ideas logically.</li>
+            <li>Avoid descriptive/figurative language (keep it objective).</li>
+            <li>Compare-and-contrast essays are often expository.</li>
+          </ul>
+        </div>
+      </details>
     </div>
+
+    <!-- QUIZ -->
+    <div class="panel" style="margin-top:14px" id="quiz">
+      <div class="row">
+        <div>
+          <div class="sectionTitle"><b>Mini Quiz (Multiple Choice)</b></div>
+          <div class="muted" style="font-size:13px">Pick one answer for each question, then check your score.</div>
+        </div>
+        <div class="pill"><b>Goal:</b> check if you really understand the differences</div>
+      </div>
+
+      <div class="q" data-q="1">
+        <div class="qtitle">1) Which essay type focuses on creating a vivid picture using the five senses?</div>
+        <label class="opt"><input type="radio" name="q1" value="A"> A) Expository</label>
+        <label class="opt"><input type="radio" name="q1" value="B"> B) Descriptive</label>
+        <label class="opt"><input type="radio" name="q1" value="C"> C) Argumentative</label>
+        <div class="muted" data-exp="q1" style="margin-top:10px;display:none"></div>
+      </div>
+
+      <div class="q" data-q="2">
+        <div class="qtitle">2) Which essay type should avoid opinions and focus on facts and clear explanation?</div>
+        <label class="opt"><input type="radio" name="q2" value="A"> A) Narrative</label>
+        <label class="opt"><input type="radio" name="q2" value="B"> B) Expository</label>
+        <label class="opt"><input type="radio" name="q2" value="C"> C) Descriptive</label>
+        <div class="muted" data-exp="q2" style="margin-top:10px;display:none"></div>
+      </div>
+
+      <div class="q" data-q="3">
+        <div class="qtitle">3) Ethos, logos, and pathos are mainly used in:</div>
+        <label class="opt"><input type="radio" name="q3" value="A"> A) Argumentative writing</label>
+        <label class="opt"><input type="radio" name="q3" value="B"> B) Descriptive writing</label>
+        <label class="opt"><input type="radio" name="q3" value="C"> C) Narrative writing</label>
+        <div class="muted" data-exp="q3" style="margin-top:10px;display:none"></div>
+      </div>
+
+      <div class="q" data-q="4">
+        <div class="qtitle">4) Which part of an essay usually includes the hook, background, and thesis?</div>
+        <label class="opt"><input type="radio" name="q4" value="A"> A) Conclusion</label>
+        <label class="opt"><input type="radio" name="q4" value="B"> B) Body paragraphs</label>
+        <label class="opt"><input type="radio" name="q4" value="C"> C) Introduction</label>
+        <div class="muted" data-exp="q4" style="margin-top:10px;display:none"></div>
+      </div>
+
+      <div class="q" data-q="5">
+        <div class="qtitle">5) What makes a narrative essay different from a list of events?</div>
+        <label class="opt"><input type="radio" name="q5" value="A"> A) It has a message/theme and a clear storyline</label>
+        <label class="opt"><input type="radio" name="q5" value="B"> B) It uses only statistics</label>
+        <label class="opt"><input type="radio" name="q5" value="C"> C) It avoids characters</label>
+        <div class="muted" data-exp="q5" style="margin-top:10px;display:none"></div>
+      </div>
+
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn" id="gradeQuiz">Check Score</button>
+        <button class="btn" id="resetQuiz">Reset Quiz</button>
+      </div>
+
+      <div class="result" id="quizResult" style="display:none"></div>
+    </div>
+
+    <!-- RESOURCES -->
+    <div class="panel" style="margin-top:14px" id="resources">
+      <div class="sectionTitle"><b>Resources (References)</b></div>
+      <div class="card">
+        <h3>Descriptive Writing Worksheet</h3>
+        <ul>
+          <li>
+            <a href="https://www.sjsu.edu/aanapisi/docs/specificsentencesjudnick.pdf" target="_blank" rel="noopener">
+              https://www.sjsu.edu/aanapisi/docs/specificsentencesjudnick.pdf
+            </a>
+          </li>
+        </ul>
+        <div class="muted" style="margin-top:10px;font-size:13px">
+          Add any future sources here (articles, handouts, textbooks, class slides).
+        </div>
+      </div>
+    </div>
+
   </div>
+
+  <button class="toTop" id="toTop">↑ Top</button>
+
+  <script>
+    // --- Expand/Collapse all ---
+    const accs = () => Array.from(document.querySelectorAll("details.acc"));
+    document.getElementById("expandAll").addEventListener("click", () => accs().forEach(d => d.open = true));
+    document.getElementById("collapseAll").addEventListener("click", () => accs().forEach(d => d.open = false));
+
+    // --- Search filter: filters accordion + cards by text ---
+    const search = document.getElementById("search");
+    search.addEventListener("input", () => {
+      const q = search.value.trim().toLowerCase();
+      // filter details blocks
+      accs().forEach(d => {
+        const text = d.innerText.toLowerCase();
+        d.style.display = (!q || text.includes(q)) ? "" : "none";
+      });
+      // filter overview cards
+      document.querySelectorAll('[data-kind="overview"]').forEach(c => {
+        const text = c.innerText.toLowerCase();
+        c.style.display = (!q || text.includes(q)) ? "" : "none";
+      });
+    });
+
+    // --- Checklist progress + save/load ---
+    const ck = Array.from(document.querySelectorAll(".ck"));
+    const progressBadge = document.getElementById("progressBadge");
+    const progressText = document.getElementById("progressText");
+
+    function updateChecklist(){
+      const done = ck.filter(x => x.checked).length;
+      const pct = ck.length ? Math.round(done / ck.length * 100) : 0;
+      progressBadge.textContent = pct + "%";
+      progressText.textContent = "Checklist progress: " + done + " / " + ck.length;
+      progressBadge.className = "badge " + (pct === 100 ? "good" : pct >= 60 ? "warn" : "");
+    }
+    ck.forEach(x => x.addEventListener("change", updateChecklist));
+    updateChecklist();
+
+    document.getElementById("resetChecklist").addEventListener("click", () => {
+      ck.forEach(x => x.checked = false);
+      localStorage.removeItem("essayChecklistStates");
+      updateChecklist();
+    });
+
+    document.getElementById("saveChecklist").addEventListener("click", () => {
+      localStorage.setItem("essayChecklistStates", JSON.stringify(ck.map(x => x.checked)));
+      alert("Saved.");
+    });
+
+    document.getElementById("loadChecklist").addEventListener("click", () => {
+      const raw = localStorage.getItem("essayChecklistStates");
+      if(!raw){ alert("No saved progress."); return; }
+      const states = JSON.parse(raw);
+      ck.forEach((x,i) => x.checked = !!states[i]);
+      updateChecklist();
+      alert("Loaded.");
+    });
+
+    // --- Copy template ---
+    document.getElementById("copyTemplate").addEventListener("click", async () => {
+      const template =
+`ESSAY TEMPLATE (Fill in the brackets)
+
+Introduction
+- Hook: [1–2 sentences]
+- Background: [what the reader needs to know]
+- Thesis: [your main claim or central idea]
+
+Body Paragraph 1
+- Topic sentence: [main point]
+- Point: [reason/claim]
+- Example/Evidence: [fact, quote, detail]
+- Explain: [how it supports the point]
+- Link: [connect to thesis]
+
+Body Paragraph 2
+- Topic sentence: [...]
+- Point: [...]
+- Example/Evidence: [...]
+- Explain: [...]
+- Link: [...]
+
+(Argumentative only) Counterargument + Rebuttal
+- Counterargument: [strong opposing view]
+- Rebuttal: [why it’s limited/incorrect + evidence]
+
+Conclusion
+- Restate thesis (new words)
+- Summarize main points
+- Final insight / implication`;
+      try{
+        await navigator.clipboard.writeText(template);
+        alert("Template copied.");
+      }catch(e){
+        alert("Copy failed. Try a different browser or use HTTPS (GitHub Pages is HTTPS).");
+      }
+    });
+
+    // --- Quiz ---
+    const answers = {
+      q1: {a:"B", exp:"Descriptive essays use the five senses to create a vivid picture."},
+      q2: {a:"B", exp:"Expository writing informs/explains using facts, not opinions."},
+      q3: {a:"A", exp:"Ethos/Logos/Pathos are persuasion tools used in argumentative writing."},
+      q4: {a:"C", exp:"The introduction usually contains the hook, background, and thesis."},
+      q5: {a:"A", exp:"Narratives have a theme/message and a clear storyline (not just events)."}
+    };
+
+    function getChoice(name){
+      const checked = document.querySelector(`input[name="${name}"]:checked`);
+      return checked ? checked.value : null;
+    }
+
+    document.getElementById("gradeQuiz").addEventListener("click", () => {
+      let score = 0;
+      let total = Object.keys(answers).length;
+      let missing = 0;
+
+      for(const key of Object.keys(answers)){
+        const pick = getChoice(key);
+        const expBox = document.querySelector(`[data-exp="${key}"]`);
+        expBox.style.display = "block";
+
+        if(!pick){
+          missing++;
+          expBox.innerHTML = `<span class="badge warn">No answer</span> ${answers[key].exp}`;
+          continue;
+        }
+        if(pick === answers[key].a){
+          score++;
+          expBox.innerHTML = `<span class="badge good">Correct</span> ${answers[key].exp}`;
+        }else{
+          expBox.innerHTML = `<span class="badge bad">Incorrect</span> Correct answer: <b>${answers[key].a}</b>. ${answers[key].exp}`;
+        }
+      }
+
+      const box = document.getElementById("quizResult");
+      box.style.display = "block";
+      const pct = Math.round(score / total * 100);
+      let label = pct === 100 ? "Perfect" : (pct >= 80 ? "Strong" : (pct >= 60 ? "OK" : "Needs work"));
+      box.innerHTML =
+        `<div><span class="badge ${pct===100?"good":pct>=80?"warn":pct>=60?"warn":"bad"}">${label}</span>
+        Score: <b>${score} / ${total}</b> (${pct}%). ${missing? "Unanswered: <b>"+missing+"</b>." : ""}</div>
+        <div class="muted" style="margin-top:8px;font-size:13px">Fix the questions you missed by opening the relevant essay section above.</div>`;
+    });
+
+    document.getElementById("resetQuiz").addEventListener("click", () => {
+      document.querySelectorAll('#quiz input[type="radio"]').forEach(x => x.checked = false);
+      document.querySelectorAll('[data-exp]').forEach(x => x.style.display = "none");
+      const box = document.getElementById("quizResult");
+      box.style.display = "none";
+      box.innerHTML = "";
+    });
+
+    // --- Back to top ---
+    const toTop = document.getElementById("toTop");
+    window.addEventListener("scroll", () => {
+      toTop.style.display = window.scrollY > 350 ? "block" : "none";
+    });
+    toTop.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+  </script>
 </body>
 </html>
