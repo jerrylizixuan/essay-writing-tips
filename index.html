@@ -1,342 +1,759 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-<title>Essay Writing Guide</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Essay Writing Tips</title>
+  <style>
+    :root{
+      --bg:#0b1020; --panel:#111a33; --card:#0f1730; --text:#e9eeff; --muted:#b9c4ffcc;
+      --line:#26335f; --accent:#7aa2ff; --good:#34d399; --warn:#fbbf24; --bad:#fb7185;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --r: 16px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(122,162,255,.22), transparent 55%),
+        radial-gradient(900px 500px at 110% 10%, rgba(52,211,153,.14), transparent 50%),
+        var(--bg);
+      color: var(--text);
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:18px}
+    .panel{
+      background: rgba(17,26,51,.62);
+      border:1px solid var(--line);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+    h1{margin:0;font-size:22px}
+    h2{margin:0 0 8px;font-size:18px}
+    h3{margin:12px 0 6px;font-size:15px}
+    .muted{color:var(--muted)}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px; border-radius:999px;
+      border:1px solid rgba(122,162,255,.45);
+      background: rgba(122,162,255,.10);
+      font-size:12.5px;
+    }
+    .toolbar{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      margin-top:12px;
+    }
+    .btn, .input{
+      border-radius: 12px;
+      border:1px solid rgba(38,51,95,.9);
+      background: rgba(15,23,48,.55);
+      color: var(--text);
+      padding:10px 12px;
+      font-size: 14px;
+    }
+    .btn{cursor:pointer}
+    .btn:hover{border-color: rgba(122,162,255,.75)}
+    .input{flex:1 1 260px; outline:none}
+    .grid{
+      display:grid; gap:14px;
+      grid-template-columns: 1fr 1fr;
+      margin-top:14px;
+    }
+    @media (max-width: 920px){ .grid{grid-template-columns:1fr;} }
+    .card{
+      background: rgba(15,23,48,.48);
+      border:1px solid rgba(38,51,95,.8);
+      border-radius: var(--r);
+      padding:14px;
+    }
+    ul{margin:8px 0 0; padding-left:18px; line-height:1.6}
+    li{margin:6px 0}
+    details{
+      background: rgba(15,23,48,.45);
+      border:1px solid rgba(38,51,95,.8);
+      border-radius: var(--r);
+      padding:12px 12px;
+      margin-top:12px;
+    }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      font-weight:800;
+    }
+    summary::-webkit-details-marker{display:none}
+    .chev{opacity:.9; transition: transform .15s ease}
+    details[open] .chev{transform:rotate(180deg)}
+    .sectionTitle{margin:18px 0 10px; font-size:16px;}
+    .hr{height:1px; background: rgba(38,51,95,.75); margin:12px 0}
 
-<style>
-body{
-font-family:Arial;
-background:#f5f5f5;
-margin:40px;
-}
+    .qwrap{
+      margin-top:12px;
+      padding:12px;
+      border:1px solid rgba(38,51,95,.8);
+      border-radius: var(--r);
+      background: rgba(17,26,51,.45);
+    }
+    .qhead{
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .qtitle{margin:0; font-weight:900; font-size:14.5px}
+    .qnote{margin:6px 0 0; font-size:13px}
+    .q{
+      padding:12px;
+      border:1px solid rgba(38,51,95,.75);
+      border-radius: 14px;
+      background: rgba(15,23,48,.40);
+      margin-top:12px;
+    }
+    .qt{margin:0 0 8px; font-weight:800}
+    .opt{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 10px;
+      border:1px solid rgba(38,51,95,.70);
+      border-radius: 12px;
+      background: rgba(17,26,51,.35);
+      cursor:pointer;
+      margin-top:8px;
+    }
+    .opt input{margin-top:3px}
+    .opt:hover{border-color: rgba(122,162,255,.7)}
+    .result{
+      margin-top:12px;
+      padding:12px;
+      border-radius: var(--r);
+      border:1px solid rgba(38,51,95,.8);
+      background: rgba(17,26,51,.55);
+    }
+    .badge{
+      display:inline-block;
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid rgba(38,51,95,.9);
+      background: rgba(17,26,51,.55);
+      font-size:12.5px;
+      margin-right:8px;
+    }
+    .good{border-color: rgba(52,211,153,.6); background: rgba(52,211,153,.10)}
+    .bad{border-color: rgba(251,113,133,.6); background: rgba(251,113,133,.10)}
+    .warn{border-color: rgba(251,191,36,.7); background: rgba(251,191,36,.10)}
 
-h1{
-text-align:center;
-}
-
-section{
-background:white;
-padding:20px;
-margin-bottom:20px;
-border-radius:8px;
-}
-
-details{
-margin-top:10px;
-}
-
-.quiz{
-margin-top:10px;
-background:#eef;
-padding:10px;
-}
-
-button{
-margin-top:10px;
-padding:5px 10px;
-}
-</style>
-
-<script>
-function checkQuiz(id,answers){
-
-let score=0
-let total=answers.length
-
-for(let i=0;i<answers.length;i++){
-let q=document.querySelector('input[name="'+id+i+'"]:checked')
-if(q && q.value==answers[i]) score++
-}
-
-alert("Score: "+score+" / "+total)
-
-}
-</script>
-
+    .toTop{
+      position: fixed; right: 18px; bottom: 18px;
+      display:none;
+      padding:10px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(38,51,95,.9);
+      background: rgba(17,26,51,.85);
+      color: var(--text);
+      cursor:pointer;
+    }
+    .toTop:hover{border-color: rgba(122,162,255,.75)}
+    @media print{
+      .toolbar, .toTop, .quizButtons {display:none !important;}
+      body{background:#fff;color:#000}
+      .panel,.card,details,.qwrap,.q{box-shadow:none;background:#fff;border-color:#ddd}
+      a{color:#000;text-decoration:underline}
+    }
+  </style>
 </head>
-
 <body>
-
-<h1>Essay Writing Guide</h1>
-
-
-<section>
-
-<h2>General Essay Writing Tips</h2>
-
-<p>
-When writing an essay there are a few things to keep in mind that will help make your essay stronger. 
-To start, storm your topic beforehand and make an outline to help structure your ideas. 
-As part of your structure you can create a thesis before you start writing. 
-Having a strong thesis will improve your essay structure and clarity.
-</p>
-
-<h3>Essay Structure</h3>
-
-<ul>
-<li><b>Introduction</b></li>
-<li>Introduction sentences or hook</li>
-<li>Background information</li>
-<li>Thesis statement</li>
-</ul>
-
-<ul>
-<li><b>Body Paragraphs</b></li>
-<li>Topic sentences</li>
-<li>Point</li>
-<li>Example</li>
-<li>Evidence</li>
-<li>Repeat point, example, evidence for how many points you have</li>
-<li>Conclusion sentence</li>
-</ul>
-
-<ul>
-<li><b>Conclusion</b></li>
-<li>Restate the thesis</li>
-<li>Summarize the main points</li>
-<li>Concluding sentence</li>
-</ul>
-
-<h3>60-Second Submission Checklist</h3>
-
-<ul>
-<li>Make sure your thesis is clear and appropriate.</li>
-<li>Each paragraph focuses on one clear main idea.</li>
-<li>Evidence clearly supports the argument.</li>
-<li>The conclusion avoids repetition and ends with meaningful insight.</li>
-<li>Proofread for spelling and punctuation.</li>
-</ul>
-
-</section>
-
-
-<section>
-
-<details>
-<summary><h2>Descriptive Essay</h2></summary>
-
-<p>
-Descriptive essays describe objects, people, events, and feelings. 
-The goal is to help the reader clearly imagine what is being described.
-</p>
-
-<h3>Worksheet</h3>
-
-<p>
-This worksheet has exercises and sentence rewriting activities to help you practice descriptive language.
-</p>
-
-<a href="https://www.sjsu.edu/aanapisi/docs/specificsentencesjudnick.pdf">Descriptive Worksheet</a>
-
-<h3>Figurative Language</h3>
-
-<p>
-Figurative language helps writers make descriptions more vivid. 
-Techniques such as simile, metaphor, and alliteration help create stronger imagery.
-</p>
-
-<a href="https://reedsy.com/blog/what-is-figurative-language/">More about figurative language</a>
-
-<h3>Video</h3>
-
-<a href="https://www.youtube.com/watch?v=U_qDkk5EbQQ">Descriptive Writing Video</a>
-
-<h3>Key Takeaways</h3>
-
-<ul>
-<li>Use the five senses</li>
-<li>Be specific</li>
-<li>Use figurative language carefully</li>
-<li>Explain the origin or background</li>
-<li>Connect to reader emotions</li>
-</ul>
-
-<div class="quiz">
-
-<h3>Quiz</h3>
-
-<p>What is the goal of descriptive writing?</p>
-
-<label><input type="radio" name="d0" value="0"> Convince readers</label><br>
-<label><input type="radio" name="d0" value="1"> Help readers imagine the scene</label><br>
-<label><input type="radio" name="d0" value="0"> Explain instructions</label>
-
-<br>
-
-<button onclick="checkQuiz('d',[1])">Check</button>
-
-</div>
-
-</details>
-
-</section>
-
-
-
-<section>
-
-<details>
-<summary><h2>Narrative Essay</h2></summary>
-
-<p>
-Narrative writing tells a story from the author’s point of view. 
-Narrative essays include characters, setting, and a clear storyline.
-</p>
-
-<h3>Worksheet</h3>
-
-<a href="https://www.sjsu.edu/writingcenter/docs/handouts/Personal%20Narrative%20Essays.pdf">
-Narrative Writing Worksheet
-</a>
-
-<h3>Story Structure</h3>
-
-<p>
-Narrative essays follow a storyline with a beginning, middle, and end. 
-The story introduces characters, setting, and time. 
-A conflict develops and builds through rising action until the climax, followed by falling action and resolution.
-</p>
-
-<h3>Key Takeaways</h3>
-
-<ul>
-<li>Develop characters</li>
-<li>Write in first or third person</li>
-<li>Use sensory description</li>
-<li>Have a clear story point</li>
-</ul>
-
-<div class="quiz">
-
-<h3>Quiz</h3>
-
-<p>Narrative writing usually includes:</p>
-
-<label><input type="radio" name="n0" value="1"> Characters and storyline</label><br>
-<label><input type="radio" name="n0" value="0"> Only statistics</label><br>
-<label><input type="radio" name="n0" value="0"> Only instructions</label>
-
-<br>
-
-<button onclick="checkQuiz('n',[1])">Check</button>
-
-</div>
-
-</details>
-
-</section>
-
-
-
-<section>
-
-<details>
-<summary><h2>Argumentative Essay</h2></summary>
-
-<p>
-Argumentative essays try to convince readers using evidence such as facts, statistics, and examples.
-</p>
-
-<h3>Worksheet</h3>
-
-<a href="https://www.is34.org/pdfs/Examples_of_Argumentative_Language.PDF">
-Argumentative Worksheet
-</a>
-
-<h3>Persuasive Techniques</h3>
-
-<ul>
-<li><b>Ethos</b> – credibility or trust</li>
-<li><b>Logos</b> – logic and facts</li>
-<li><b>Pathos</b> – emotional appeal</li>
-</ul>
-
-<a href="https://www.youtube.com/watch?v=9L_G82HH9Tg">
-Persuasive Writing Video
-</a>
-
-<h3>Key Takeaways</h3>
-
-<ul>
-<li>Have a clear thesis</li>
-<li>Use ethos, logos, and pathos</li>
-<li>Support arguments with evidence</li>
-<li>Write a strong conclusion</li>
-</ul>
-
-<div class="quiz">
-
-<h3>Quiz</h3>
-
-<p>What does logos appeal to?</p>
-
-<label><input type="radio" name="a0" value="0"> Emotion</label><br>
-<label><input type="radio" name="a0" value="1"> Logic and facts</label><br>
-<label><input type="radio" name="a0" value="0"> Characters</label>
-
-<br>
-
-<button onclick="checkQuiz('a',[1])">Check</button>
-
-</div>
-
-</details>
-
-</section>
-
-
-
-<section>
-
-<details>
-<summary><h2>Expository Essay</h2></summary>
-
-<p>
-Expository essays explain a topic clearly using facts and logical organization.
-</p>
-
-<h3>Worksheet</h3>
-
-<a href="https://www.edynamiclearning.com/wp-content/uploads/2020/04/eDynamic-Learning-Discovery-Arcticle-Expository-Essay-Activity.pdf">
-Expository Worksheet
-</a>
-
-<h3>Videos</h3>
-
-<a href="https://www.youtube.com/watch?v=UREHexeJK08">Overview of Expository Writing</a><br>
-
-<a href="https://www.google.com/search?q=how+to+write+concisely+video">Clear and Concise Writing</a>
-
-<h3>Key Takeaways</h3>
-
-<ul>
-<li>Use facts and examples</li>
-<li>Write clearly and concisely</li>
-<li>Organize ideas logically</li>
-<li>Avoid figurative language</li>
-</ul>
-
-<div class="quiz">
-
-<h3>Quiz</h3>
-
-<p>Expository writing is used to:</p>
-
-<label><input type="radio" name="e0" value="1"> Explain or inform</label><br>
-<label><input type="radio" name="e0" value="0"> Tell fictional stories</label><br>
-<label><input type="radio" name="e0" value="0"> Persuade emotionally</label>
-
-<br>
-
-<button onclick="checkQuiz('e',[1])">Check</button>
-
-</div>
-
-</details>
-
-</section>
-
-
-
+  <div class="container">
+    <div class="panel">
+      <div class="row">
+        <div>
+          <h1>Essay Writing Tips</h1>
+          <div class="muted">General · Descriptive · Narrative · Argumentative · Expository</div>
+        </div>
+        <div class="pill"><b>Buttons:</b> search · expand/collapse · quizzes</div>
+      </div>
+
+      <div class="toolbar">
+        <input id="search" class="input" placeholder="Search your content..." />
+        <button class="btn" id="expandAll">Expand all</button>
+        <button class="btn" id="collapseAll">Collapse all</button>
+        <button class="btn" onclick="window.print()">Print / Save PDF</button>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:14px">
+      <div class="sectionTitle"><b>Overview</b></div>
+      <div class="grid">
+        <div class="card" data-kind="overview">
+          <h2>General Essay Writing tips</h2>
+          <p class="muted" style="margin:0">
+            When writing an essay there are a few things to keep in mind that will help make your essay stronger. To start, storm your topic beforehand and make an outline to help structure your ideas. As part of your structure you can create a thesis before you start writing. Having a strong thesis will improve your essay structure and clarity.
+          </p>
+        </div>
+
+        <div class="card" data-kind="overview">
+          <h2>All essays follow a similar formate:</h2>
+          <ul>
+            <li><b>Introduction</b></li>
+            <li>Introduction sentences or hook</li>
+            <li>Background information</li>
+            <li>Thesis statement</li>
+            <li><b>Body Paragraphs</b></li>
+            <li>Topic sentences</li>
+            <li>Point</li>
+            <li>Example</li>
+            <li>Evidence</li>
+            <li>Repeat point, example, evidence for how many points you have</li>
+            <li>Conclusion sentence</li>
+            <li><b>Conclusion</b></li>
+            <li>Restate the thesis</li>
+            <li>Summarize the main points</li>
+            <li>Concluding sentence</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <details class="acc" open data-type="general">
+      <summary>General Essay Writing tips <span class="chev">▼</span></summary>
+      <div class="hr"></div>
+
+      <div class="card">
+        <p class="muted" style="margin:0">
+          When writing an essay there are a few things to keep in mind that will help make your essay stronger. To start, storm your topic beforehand and make an outline to help structure your ideas. As part of your structure you can create a thesis before you start writing. Having a strong thesis will improve your essay structure and clarity.
+        </p>
+
+        <div class="hr"></div>
+        <h3>60-Second Submission Checklist</h3>
+        <ul id="checklist">
+          <li><label><input type="checkbox" class="ck" /> Make sure your thesis is clear and is appropriate for the type of essay you are writing.</label></li>
+          <li><label><input type="checkbox" class="ck" /> Each paragraph focuses on one clear main idea throughout the entire paragraph.</label></li>
+          <li><label><input type="checkbox" class="ck" /> All evidence is relevant and clearly explains how it supports the main idea or argument.</label></li>
+          <li><label><input type="checkbox" class="ck" /> The conclusion avoids repetition and ends with meaningful insights or implications.</label></li>
+          <li><label><input type="checkbox" class="ck" /> Make sure to proofread the entire essay for spelling, punctuation, and clear sentence structure.</label></li>
+        </ul>
+
+        <div class="result" style="margin-top:12px">
+          <span class="badge" id="progressBadge">0%</span>
+          <span class="muted" id="progressText">Checklist progress</span>
+          <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+            <button class="btn" id="resetChecklist">Reset checklist</button>
+            <button class="btn" id="saveChecklist">Save progress</button>
+            <button class="btn" id="loadChecklist">Load saved</button>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+        <h3>Editing tips</h3>
+        <p class="muted" style="margin:0">Editing tips</p>
+      </div>
+
+      <div class="qwrap" data-quiz="general">
+        <div class="qhead">
+          <div>
+            <p class="qtitle">Test Your General Essay Skills</p>
+            <p class="muted qnote">Answer all questions, then click “Check Score”.</p>
+          </div>
+          <div class="pill"><b>Quiz:</b> General</div>
+        </div>
+
+        <div class="q">
+          <p class="qt">1) What should you do before you start writing to help structure your ideas?</p>
+          <label class="opt"><input type="radio" name="general1" value="A"> A) Write without planning</label>
+          <label class="opt"><input type="radio" name="general1" value="B"> B) Storm your topic and make an outline</label>
+          <label class="opt"><input type="radio" name="general1" value="C"> C) Only write the conclusion first</label>
+          <div class="muted" data-exp="general1" style="display:none;margin-top:10px"></div>
+        </div>
+
+        <div class="q">
+          <p class="qt">2) Which part usually includes the hook, background information, and thesis statement?</p>
+          <label class="opt"><input type="radio" name="general2" value="A"> A) Body Paragraphs</label>
+          <label class="opt"><input type="radio" name="general2" value="B"> B) Introduction</label>
+          <label class="opt"><input type="radio" name="general2" value="C"> C) References</label>
+          <div class="muted" data-exp="general2" style="display:none;margin-top:10px"></div>
+        </div>
+
+        <div class="q">
+          <p class="qt">3) What should your conclusion do?</p>
+          <label class="opt"><input type="radio" name="general3" value="A"> A) Add random new points</label>
+          <label class="opt"><input type="radio" name="general3" value="B"> B) Restate the thesis and summarize the main points</label>
+          <label class="opt"><input type="radio" name="general3" value="C"> C) Remove your thesis</label>
+          <div class="muted" data-exp="general3" style="display:none;margin-top:10px"></div>
+        </div>
+
+        <div class="quizButtons" style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn" onclick="gradeQuiz('general')">Check Score</button>
+          <button class="btn" onclick="resetQuiz('general')">Reset</button>
+        </div>
+        <div class="result" id="result-general" style="display:none"></div>
+      </div>
+    </details>
+
+    <details class="acc" data-type="descriptive">
+      <summary>Descriptive Essay <span class="chev">▼</span></summary>
+      <div class="hr"></div>
+      <div class="card">
+        <h2>Descriptive Essay</h2>
+        <p class="muted" style="margin:0">
+          Descriptive essays are used to describe objects, the traits and characteristics of people, events, and feelings. The goal is to help the reader picture exactly what is being described. Descriptive writing comes from the author's experiences and perspectives, and should transport the reader to what the author is experiencing. For example, if you are describing roses, you would not only talk about what they look like, but also noticeable details such as sounds, colours, and even the mood or sensation of being around the roses.
+        </p>
+        <h3>Tips for a descriptive essay:</h3>
+        <ul>
+          <li>Use the five senses</li>
+          <li>Be specific</li>
+          <li>Use figurative language carefully</li>
+          <li>Talk about the origin or if it is an event what led up to it</li>
+          <li>Connect to the readers emotions</li>
+        </ul>
+
+        <div class="hr"></div>
+        <h3>Descriptive Writing Worksheet</h3>
+        <p class="muted" style="margin:0">
+          Here is a worksheet developed by a university professor that is meant to help increase your skills in descriptive writing. This worksheet has several timed exercises, examples, and sentence by sentence writing practice. Give it a try!
+        </p>
+        <ul>
+          <li><a href="https://www.sjsu.edu/aanapisi/docs/specificsentencesjudnick.pdf" target="_blank" rel="noopener">https://www.sjsu.edu/aanapisi/docs/specificsentencesjudnick.pdf</a></li>
+        </ul>
+
+        <div class="hr"></div>
+        <h3>Video</h3>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=U_qDkk5EbQQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=U_qDkk5EbQQ</a></li>
+        </ul>
+      </div>
+
+      <div class="qwrap" data-quiz="descriptive">
+        <div class="qhead">
+          <div>
+            <p class="qtitle">Test Your Descriptive Essay Skills</p>
+            <p class="muted qnote">Answer all questions, then click “Check Score”.</p>
+          </div>
+          <div class="pill"><b>Quiz:</b> Descriptive</div>
+        </div>
+
+        <div class="q">
+          <p class="qt">1) What is the goal of a descriptive essay?</p>
+          <label class="opt"><input type="radio" name="descriptive1" value="A"> A) To convince the reader to support an opinion</label>
+          <label class="opt"><input type="radio" name="descriptive1" value="B"> B) To help the reader picture exactly what is being described</label>
+          <label class="opt"><input type="radio" name="descriptive1" value="C"> C) To explain a topic with facts only</label>
+          <div class="muted" data-exp="descriptive1" style="display:none;margin-top:10px"></div>
+        </div>
+
+        <div class="q">
+          <p class="qt">2) Which is one of the tips for a descriptive essay?</p>
+          <label class="opt"><input type="radio" name="descriptive2" value="A"> A) Do not use any details</label>
+          <label class="opt"><input type="radio" name="descriptive2" value="B"> B) Use the five senses</label>
+          <label class="opt"><input type="radio" name="descriptive2" value="C"> C) Only use statistics</label>
+          <div class="muted" data-exp="descriptive2" style="display:none;margin-top:10px"></div>
+        </div>
+
+        <div class="q">
+          <p class="qt">3) Descriptive writing should transport the reader to:</p>
+          <label class="opt"><input type="radio" name="descriptive3" value="A"> A) What the author is experiencing</label>
+          <label class="opt"><input type="radio" name="descriptive3" value="B"> B) A list of facts with no feeling</label>
+          <label class="opt"><input type="radio" name="descriptive3" value="C"> C) Only a conclusion sentence</label>
+          <div class="muted" data-exp="descriptive3" style="display:none;margin-top:10px"></div>
+        </div>
+
+        <div class="quizButtons" style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn" onclick="gradeQuiz('descriptive')">Check Score</button>
+          <button class="btn" onclick="resetQuiz('descriptive')">Reset</button>
+        </div>
+        <div class="result" id="result-descriptive" style="display:none"></div>
+      </div>
+    </details>
+
+    <details class="acc" data-type="narrative">
+      <summary>Narrative Essay <span class="chev">▼</span></summary>
+      <div class="hr"></div>
+      <div class="card">
+        <h2>Narrative Essay</h2>
+        <p class="muted" style="margin:0">
+          Narrative or personal writing is when the author tells a story from their point of view. There is usually a reason or message behind the story. Narrative essays include characters, a setting, a main event or climax, and most importantly, a clear storyline. They are often written in first or third person.
+        </p>
+        <h3>Tips for a narrative essay:</h3>
+        <ul>
+          <li>Focus on developing characters</li>
+          <li>Write in third person or first person</li>
+          <li>Try an make use of descriptive writing by using the five senses, connect with emotions, using dialogue strategically, and investigating thoughts</li>
+          <li>A clear topic or point for the essay</li>
+        </ul>
+
+        <div class="hr"></div>
+        <h3>Narrative Writing Activity</h3>
+        <p class="muted" style="margin:0">
+          Here is a worksheet developed by a university professor that is meant to help increase your skills in narrative writing. This worksheet gives you practice with personal narrative structure, organization, and story development. Give it a try!
+        </p>
+        <ul>
+          <li><a href="https://www.sjsu.edu/writingcenter/docs/handouts/Personal%20Narrative%20Essays.pdf" target="_blank" rel="noopener">https://www.sjsu.edu/writingcenter/docs/handouts/Personal%20Narrative%20Essays.pdf</a></li>
+        </ul>
+      </div>
+
+      <div class="qwrap" data-quiz="narrative">
+        <div class="qhead">
+          <div>
+            <p class="qtitle">Test Your Narrative Essay Skills</p>
+            <p class="muted qnote">Answer all questions, then click “Check Score”.</p>
+          </div>
+          <div class="pill"><b>Quiz:</b> Narrative</div>
+        </div>
+
+        <div class="q">
+          <p class="qt">1) Narrative essays include:</p>
+          <label class="opt"><input type="radio" name="narrative1" value="A"> A) Characters, a setting, a main event or climax, and a clear storyline</label>
+          <label class="opt"><input type="radio" name="narrative1" value="B"> B) Only facts and no story</label>
+          <label class="opt"><input type="radio" name="narrative1" value="C"> C) Only compare and contrast</label>
+          <div class="muted" data-exp="narrative1" style="display:none;margin-top:10px"></div>
+        </div>
+
+        <div class="q">
+          <p class="qt">2) Narrative essays are often written in:</p>
+          <label class="opt"><input type="radio" name="narrative2" value="A"> A) First or third person</label>
+          <label class="opt"><input type="radio" name="narrative2" value="B"> B) Only second person</label>
+          <label class="opt"><input type="radio" name="narrative2" value="C"> C) No point of view</label>
+          <div class="muted" data-exp="narrative2" style="display:none;margin-top:10px"></div>
+        </div>
+
+        <div class="q">
+          <p class="qt">3) One tip for a narrative essay is:</p>
+          <label class="opt"><input type="radio" name="narrative3" value="A"> A) Focus on developing characters</label>
+          <label class="opt"><input type="radio" name="narrative3" value="B"> B) Do not use a storyline</label>
+          <label class="opt"><input type="radio" name="narrative3" value="C"> C) Avoid emotions and thoughts</label>
+          <div class="muted" data-exp="narrative3" style="display:none;margin-top:10px"></div>
+        </div>
+
+        <div class="quizButtons" style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn" onclick="gradeQuiz('narrative')">Check Score</button>
+          <button class="btn" onclick="resetQuiz('narrative')">Reset</button>
+        </div>
+        <div class="result" id="result-narrative" style="display:none"></div>
+      </div>
+    </details>
+
+    <details class="acc" data-type="argumentative">
+      <summary>Argumentative Essay <span class="chev">▼</span></summary>
+      <div class="hr"></div>
+      <div class="card">
+        <h2>Argumentative Essay</h2>
+        <p class="muted" style="margin:0">
+          Argumentative essay is when you try to convince the readers to believe or support your opinion and topic. You are convincing the readers of a particular argument, not just your opinions. This is done by using evidence which can be, facts, statistics and examples to name a few.
+        </p>
+        <h3>Argumentative Essay Writing Tips</h3>
+        <ul>
+          <li>Make sure to have a clear Thesis</li>
+          <li>Use descriptive writing and persuasive writing techniques help make your argument:</li>
+          <li>Ethos- convince with celebrities or trust</li>
+          <li>Logos- appeals to logic and facts</li>
+          <li>Pathos- appeals to emotion</li>
+          <li>Have a strong conclusion</li>
+          <li>Make sure to research well</li>
+        </ul>
+
+        <div class="hr"></div>
+        <h3>Argumentative Essay: Persuasive Writing Tencques</h3>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=9L_G82HH9Tg" target="_blank" rel="noopener">https://www.youtube.com/watch?v=9L_G82HH9Tg</a></li>
+        </ul>
+
+        <h3>Argumentative Writing Worksheet</h3>
+        <p class="muted" style="margin:0">
+          Here is a worksheet developed to help increase your skills in argumentative writing. This worksheet gives examples of argumentative language and helps you practice using persuasive techniques more effectively. Give it a try!
+        </p>
+        <ul>
+          <li><a href="https://www.is34.org/pdfs/Examples_of_Argumentative_Language.PDF" target="_blank" rel="noopener">https://www.is34.org/pdfs/Examples_of_Argumentative_Language.PDF</a></li>
+        </ul>
+      </div>
+
+      <div class="qwrap" data-quiz="argumentative">
+        <div class="qhead">
+          <div>
+            <p class="qtitle">Test Your Argumentative Essay Skills</p>
+            <p class="muted qnote">Answer all questions, then click “Check Score”.</p>
+          </div>
+          <div class="pill"><b>Quiz:</b> Argumentative</div>
+        </div>
+
+        <div class="q">
+          <p class="qt">1) Argumentative essay is when you try to:</p>
+          <label class="opt"><input type="radio" name="argumentative1" value="A"> A) Describe an object using senses only</label>
+          <label class="opt"><input type="radio" name="argumentative1" value="B"> B) Convince the readers to believe or support your opinion and topic using evidence</label>
+          <label class="opt"><input type="radio" name="argumentative1" value="C"> C) Explain a topic with facts rather than opinions</label>
+          <div class="muted" data-exp="argumentative1" style="display:none;margin-top:10px"></div>
+        </div>
+
+        <div class="q">
+          <p class="qt">2) Ethos means:</p>
+          <label class="opt"><input type="radio" name="argumentative2" value="A"> A) Appeals to logic and facts</label>
+          <label class="opt"><input type="radio" name="argumentative2" value="B"> B) Appeals to emotion</label>
+          <label class="opt"><input type="radio" name="argumentative2" value="C"> C) Celebrities and trust</label>
+          <div class="muted" data-exp="argumentative2" style="display:none;margin-top:10px"></div>
+        </div>
+
+        <div class="q">
+          <p class="qt">3) Logos means:</p>
+          <label class="opt"><input type="radio" name="argumentative3" value="A"> A) Appeals to logic and facts</label>
+          <label class="opt"><input type="radio" name="argumentative3" value="B"> B) Appeals to emotion</label>
+          <label class="opt"><input type="radio" name="argumentative3" value="C"> C) Focus on characters</label>
+          <div class="muted" data-exp="argumentative3" style="display:none;margin-top:10px"></div>
+        </div>
+
+        <div class="quizButtons" style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn" onclick="gradeQuiz('argumentative')">Check Score</button>
+          <button class="btn" onclick="resetQuiz('argumentative')">Reset</button>
+        </div>
+        <div class="result" id="result-argumentative" style="display:none"></div>
+      </div>
+    </details>
+
+    <details class="acc" data-type="expository">
+      <summary>Expository Essay <span class="chev">▼</span></summary>
+      <div class="hr"></div>
+      <div class="card">
+        <h2>Expository Essay</h2>
+        <p class="muted" style="margin:0">
+          Expository essay that explains a topic in a clear and logical way. The purpose is to inform or explain something with facts rather than give one's opinions. Expository writing information, describes, explains, and defines. Thus, the compare and contrast essays, new paper articles, and instruction manuals fall under the expository essay umbrella.
+        </p>
+        <ul>
+          <li>Use facts, examples, and explain evidences</li>
+          <li>Do not use descriptive or figurative language</li>
+          <li>Use concise and clear language</li>
+          <li>Support ideas with facts and examples</li>
+          <li>Organize ideas logically</li>
+        </ul>
+
+        <div class="hr"></div>
+        <h3>Expository Essay: Clear and Concise Writing Techniques</h3>
+        <h3>How to make your writing clear and concise</h3>
+        <ul>
+          <li>
+            <a href="https://www.google.com/search?q=how+to+write+concisely+video+&client=firefox-b-d&hs=aj79&sca_esv=2e8ca08f5eada962&biw=953&bih=835&sxsrf=ANbL-n4LsIBqe9omOXaqsJsOAfIi15CRWQ%3A1772599569056&ei=EbmnaayUA-ul0PEPlOah-A8&ved=0ahUKEwjs4JH9t4WTAxXrEjQIHRRzCP8Q4dUDCBM&uact=5&oq=how+to+write+concisely+video+&gs_lp=Egxnd3Mtd2l6LXNlcnAiHWhvdyB0byB3cml0ZSBjb25jaXNlbHkgdmlkZW8gMgUQIRigAUj0C1ByWPMJcAF4AZABAJgBigGgAcwEqgEDNi4xuAEDyAEA-AEBmAIIoALqBMICChAAGLADGNYEGEfCAgsQABiABBiRAhiKBcICBhAAGBYYHsICBxAhGKABGAqYAwCIBgGQBgiSBwM3LjGgB_MWsgcDNi4xuAfiBMIHBTAuNS4zyAcRgAgA&sclient=gws-wiz-serp#fpstate=ive&vld=cid:a7267f8b,vid:CHgdvQYXQCk,st:0" target="_blank" rel="noopener">
+              How to make your writing clear and concise (search link)
+            </a>
+          </li>
+        </ul>
+
+        <h3>What is expository writing another example</h3>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=UREHexeJK08" target="_blank" rel="noopener">https://www.youtube.com/watch?v=UREHexeJK08</a></li>
+        </ul>
+
+        <h3>Expository Writing Worksheet</h3>
+        <p class="muted" style="margin:0">
+          Here is a worksheet developed to help increase your skills in expository writing. This worksheet gives practice with clear explanation, organization, and using facts and examples effectively. Give it a try!
+        </p>
+        <ul>
+          <li><a href="https://www.edynamiclearning.com/wp-content/uploads/2020/04/eDynamic-Learning-Discovery-Arcticle-Expository-Essay-Activity.pdf" target="_blank" rel="noopener">https://www.edynamiclearning.com/wp-content/uploads/2020/04/eDynamic-Learning-Discovery-Arcticle-Expository-Essay-Activity.pdf</a></li>
+        </ul>
+      </div>
+
+      <div class="qwrap" data-quiz="expository">
+        <div class="qhead">
+          <div>
+            <p class="qtitle">Test Your Expository Essay Skills</p>
+            <p class="muted qnote">Answer all questions, then click “Check Score”.</p>
+          </div>
+          <div class="pill"><b>Quiz:</b> Expository</div>
+        </div>
+
+        <div class="q">
+          <p class="qt">1) The purpose of expository writing is to:</p>
+          <label class="opt"><input type="radio" name="expository1" value="A"> A) Inform or explain with facts rather than give one's opinions</label>
+          <label class="opt"><input type="radio" name="expository1" value="B"> B) Convince readers with emotion only</label>
+          <label class="opt"><input type="radio" name="expository1" value="C"> C) Tell a personal story with characters</label>
+          <div class="muted" data-exp="expository1" style="display:none;margin-top:10px"></div>
+        </div>
+
+        <div class="q">
+          <p class="qt">2) Expository writing should:</p>
+          <label class="opt"><input type="radio" name="expository2" value="A"> A) Use descriptive or figurative language</label>
+          <label class="opt"><input type="radio" name="expository2" value="B"> B) Use concise and clear language</label>
+          <label class="opt"><input type="radio" name="expository2" value="C"> C) Avoid facts and examples</label>
+          <div class="muted" data-exp="expository2" style="display:none;margin-top:10px"></div>
+        </div>
+
+        <div class="q">
+          <p class="qt">3) One tip for expository writing is:</p>
+          <label class="opt"><input type="radio" name="expository3" value="A"> A) Organize ideas logically</label>
+          <label class="opt"><input type="radio" name="expository3" value="B"> B) Use only dialogue</label>
+          <label class="opt"><input type="radio" name="expository3" value="C"> C) Use emotions instead of facts</label>
+          <div class="muted" data-exp="expository3" style="display:none;margin-top:10px"></div>
+        </div>
+
+        <div class="quizButtons" style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn" onclick="gradeQuiz('expository')">Check Score</button>
+          <button class="btn" onclick="resetQuiz('expository')">Reset</button>
+        </div>
+        <div class="result" id="result-expository" style="display:none"></div>
+      </div>
+    </details>
+
+    <div class="panel" style="margin-top:14px" id="references" data-kind="refs">
+      <div class="sectionTitle"><b>References</b></div>
+      <div class="card">
+        <ul>
+          <li><a href="https://www.sjsu.edu/aanapisi/docs/specificsentencesjudnick.pdf" target="_blank" rel="noopener">https://www.sjsu.edu/aanapisi/docs/specificsentencesjudnick.pdf</a></li>
+          <li><a href="https://www.youtube.com/watch?v=U_qDkk5EbQQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=U_qDkk5EbQQ</a></li>
+          <li><a href="https://www.sjsu.edu/writingcenter/docs/handouts/Personal%20Narrative%20Essays.pdf" target="_blank" rel="noopener">https://www.sjsu.edu/writingcenter/docs/handouts/Personal%20Narrative%20Essays.pdf</a></li>
+          <li><a href="https://www.youtube.com/watch?v=9L_G82HH9Tg" target="_blank" rel="noopener">https://www.youtube.com/watch?v=9L_G82HH9Tg</a></li>
+          <li><a href="https://www.is34.org/pdfs/Examples_of_Argumentative_Language.PDF" target="_blank" rel="noopener">https://www.is34.org/pdfs/Examples_of_Argumentative_Language.PDF</a></li>
+          <li><a href="https://www.youtube.com/watch?v=UREHexeJK08" target="_blank" rel="noopener">https://www.youtube.com/watch?v=UREHexeJK08</a></li>
+          <li><a href="https://www.edynamiclearning.com/wp-content/uploads/2020/04/eDynamic-Learning-Discovery-Arcticle-Expository-Essay-Activity.pdf" target="_blank" rel="noopener">https://www.edynamiclearning.com/wp-content/uploads/2020/04/eDynamic-Learning-Discovery-Arcticle-Expository-Essay-Activity.pdf</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="toTop" id="toTop">↑ Top</button>
+
+  <script>
+    const accs = () => Array.from(document.querySelectorAll("details.acc"));
+    document.getElementById("expandAll").addEventListener("click", () => accs().forEach(d => d.open = true));
+    document.getElementById("collapseAll").addEventListener("click", () => accs().forEach(d => d.open = false));
+
+    const search = document.getElementById("search");
+    search.addEventListener("input", () => {
+      const q = search.value.trim().toLowerCase();
+      document.querySelectorAll("details").forEach(d => {
+        const text = d.innerText.toLowerCase();
+        d.style.display = (!q || text.includes(q)) ? "" : "none";
+      });
+      document.querySelectorAll("[data-kind]").forEach(c => {
+        const text = c.innerText.toLowerCase();
+        c.style.display = (!q || text.includes(q)) ? "" : "none";
+      });
+    });
+
+    const ck = Array.from(document.querySelectorAll(".ck"));
+    const progressBadge = document.getElementById("progressBadge");
+    const progressText = document.getElementById("progressText");
+
+    function updateChecklist(){
+      const done = ck.filter(x => x.checked).length;
+      const pct = ck.length ? Math.round(done / ck.length * 100) : 0;
+      progressBadge.textContent = pct + "%";
+      progressText.textContent = "Checklist progress: " + done + " / " + ck.length;
+      progressBadge.className = "badge " + (pct === 100 ? "good" : pct >= 60 ? "warn" : "");
+    }
+    ck.forEach(x => x.addEventListener("change", updateChecklist));
+    updateChecklist();
+
+    document.getElementById("resetChecklist").addEventListener("click", () => {
+      ck.forEach(x => x.checked = false);
+      localStorage.removeItem("essayChecklistStates");
+      updateChecklist();
+    });
+
+    document.getElementById("saveChecklist").addEventListener("click", () => {
+      localStorage.setItem("essayChecklistStates", JSON.stringify(ck.map(x => x.checked)));
+      alert("Saved.");
+    });
+
+    document.getElementById("loadChecklist").addEventListener("click", () => {
+      const raw = localStorage.getItem("essayChecklistStates");
+      if(!raw){ alert("No saved progress."); return; }
+      const states = JSON.parse(raw);
+      ck.forEach((x,i) => x.checked = !!states[i]);
+      updateChecklist();
+      alert("Loaded.");
+    });
+
+    const QUIZZES = {
+      general: {
+        qs: ["general1","general2","general3"],
+        ans: {
+          general1:{c:"B", exp:"You should storm your topic beforehand and make an outline."},
+          general2:{c:"B", exp:"The introduction includes the hook, background information, and thesis statement."},
+          general3:{c:"B", exp:"The conclusion should restate the thesis and summarize the main points."}
+        }
+      },
+      descriptive: {
+        qs: ["descriptive1","descriptive2","descriptive3"],
+        ans: {
+          descriptive1:{c:"B", exp:"The goal is to help the reader picture exactly what is being described."},
+          descriptive2:{c:"B", exp:"One tip is to use the five senses."},
+          descriptive3:{c:"A", exp:"Descriptive writing should transport the reader to what the author is experiencing."}
+        }
+      },
+      narrative: {
+        qs: ["narrative1","narrative2","narrative3"],
+        ans: {
+          narrative1:{c:"A", exp:"Narrative essays include characters, a setting, a main event or climax, and a clear storyline."},
+          narrative2:{c:"A", exp:"They are often written in first or third person."},
+          narrative3:{c:"A", exp:"One tip is to focus on developing characters."}
+        }
+      },
+      argumentative: {
+        qs: ["argumentative1","argumentative2","argumentative3"],
+        ans: {
+          argumentative1:{c:"B", exp:"Argumentative writing convinces using evidence such as facts, statistics and examples."},
+          argumentative2:{c:"C", exp:"Ethos: convince with celebrities or trust."},
+          argumentative3:{c:"A", exp:"Logos: appeals to logic and facts."}
+        }
+      },
+      expository: {
+        qs: ["expository1","expository2","expository3"],
+        ans: {
+          expository1:{c:"A", exp:"Expository writing informs/explains with facts rather than opinions."},
+          expository2:{c:"B", exp:"Expository writing should use concise and clear language."},
+          expository3:{c:"A", exp:"One tip is to organize ideas logically."}
+        }
+      }
+    };
+
+    function getPick(name){
+      const el = document.querySelector(`input[name="${name}"]:checked`);
+      return el ? el.value : null;
+    }
+
+    function gradeQuiz(name){
+      const quiz = QUIZZES[name];
+      let score = 0, missing = 0;
+      const total = quiz.qs.length;
+
+      quiz.qs.forEach(qid => {
+        const pick = getPick(qid);
+        const exp = document.querySelector(`[data-exp="${qid}"]`);
+        exp.style.display = "block";
+
+        if(!pick){
+          missing++;
+          exp.innerHTML = `<span class="badge warn">No answer</span> ${quiz.ans[qid].exp}`;
+          return;
+        }
+        if(pick === quiz.ans[qid].c){
+          score++;
+          exp.innerHTML = `<span class="badge good">Correct</span> ${quiz.ans[qid].exp}`;
+        }else{
+          exp.innerHTML = `<span class="badge bad">Incorrect</span> Correct answer: <b>${quiz.ans[qid].c}</b>. ${quiz.ans[qid].exp}`;
+        }
+      });
+
+      const pct = Math.round(score/total*100);
+      const box = document.getElementById(`result-${name}`);
+      box.style.display = "block";
+      const label = pct===100 ? "Perfect" : (pct>=80 ? "Strong" : (pct>=60 ? "OK" : "Needs work"));
+      const cls = pct===100 ? "good" : (pct>=80 ? "warn" : (pct>=60 ? "warn" : "bad"));
+      box.innerHTML = `<div><span class="badge ${cls}">${label}</span> Score: <b>${score} / ${total}</b> (${pct}%). ${missing? "Unanswered: <b>"+missing+"</b>." : ""}</div>`;
+    }
+
+    function resetQuiz(name){
+      const quiz = QUIZZES[name];
+      quiz.qs.forEach(qid => {
+        document.querySelectorAll(`input[name="${qid}"]`).forEach(x => x.checked = false);
+        const exp = document.querySelector(`[data-exp="${qid}"]`);
+        exp.style.display = "none";
+        exp.innerHTML = "";
+      });
+      const box = document.getElementById(`result-${name}`);
+      box.style.display = "none";
+      box.innerHTML = "";
+    }
+
+    const toTop = document.getElementById("toTop");
+    window.addEventListener("scroll", () => {
+      toTop.style.display = window.scrollY > 350 ? "block" : "none";
+    });
+    toTop.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
+  </script>
 </body>
 </html>
